@@ -50,7 +50,7 @@ classdef SimpleMindedTest < matlab.unittest.TestCase
         % brain surface figure is generated
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function checkBrain(testCase)
-           h = brainSurfaceVis.simpleBrainSurface();
+           h = simpleBrainSurface();
            testCase.verifyEqual(size(get(h,'Vertices')),[81924,3]);
            testCase.verifyEqual(size(get(h,'Faces')),[163840,3]);
         end
