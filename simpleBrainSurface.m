@@ -43,15 +43,17 @@ function h = simpleBrainSurface(par)
 
 if nargin == 0
     range = [0.1 0.7];
+else
+    if isstruct(par)
+        if isfield(par,'range')
+            range = par.range;
+        end
+    else
+        range = par;
+    end
 end
 
-if isstruct(par)
-    if isfield(par,'range')
-        range = par.range;
-    end
-else
-    range = par;
-end
+
 
 % get vertex data
 load('simple_brain_surface.mat');

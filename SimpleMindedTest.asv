@@ -58,28 +58,21 @@ classdef SimpleMindedTest < matlab.unittest.TestCase
         function checkDefaultShading(testCase)
            h = simpleBrainSurface();
            vertexcdata = get(h,'facevertexcdata');
-           testCase.verifyTrue(all(all(vertexcdata(:,1)==vertexcdata(:,2) & ...
-               vertexcdata(:,1)==vertexcdata(:,3))));
-           testCase.check_min_max(0.1,0.7,vertexcdata(:,1));
+           min_val = min(min(vertexcdata));
+           max_val = max(max(vertexcdata));
+           testCase.verifyTrue(abs(min_val - 0.1)<eps);
+           testCase.verifyTrue(abs(max_val - 0.7)<eps);
         end
         
         function checkSpecsObject(testCase)
-           specs_object.range = [0.05 0.8]; 
-           h = simpleBrainSurface(specs_object);
-           vertexcdata = get(h,'facevertexcdata');
-           testCase.verifyTrue(all(all(vertexcdata(:,1)==vertexcdata(:,2) & ...
-               vertexcdata(:,1)==vertexcdata(:,3))));
-           testCase.check_min_max(0.05,0.8,vertexcdata(:,1));
+           specs_object.range = [0.0.5 0.8]; 
         end
         
     end
     
     methods(Access = private)
         
-        function check_min_max(testCase, min_val, max_val, data)
-           testCase.verifyEqual(min(data),min_val,'AbsTol',0.001);
-           testCase.verifyEqual(max(data),max_val,'AbsTol',0.001);
-        end
+        
         
     end % private methods
     
