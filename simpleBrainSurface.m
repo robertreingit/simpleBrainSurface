@@ -1,4 +1,4 @@
-function h = simpleBrainSurface(range)
+function h = simpleBrainSurface(par)
 % simpleBrainSurface
 % Simple function to render a brain in 3D in MNI coordinates.
 % Addapted from surfPlot of the MRtools collection from:
@@ -11,6 +11,7 @@ function h = simpleBrainSurface(range)
 % doi: 10.1002/(SICI)1097-0193(1999)8:4<272::AID-HBM10>3.0.CO;2-4
 %
 % INPUT:
+% par = specs object and specification object
 % range = 2D vector graycolor range [darkest brightest] 
 %           { default [0.1 0.7] }
 % OUTPUT:
@@ -42,6 +43,14 @@ function h = simpleBrainSurface(range)
 
 if nargin == 0
     range = [0.1 0.7];
+end
+
+if isstruct(par)
+    if isfield(par,'range')
+        range = par.range;
+    end
+else
+    range = par;
 end
 
 % get vertex data
