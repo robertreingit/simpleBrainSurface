@@ -8,13 +8,18 @@ function driver_arrange_layout()
 % Layout is produced.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-specs.brain.pos = 'left';
+specs.pos.brain = 'left';
+specs.pos.nirs = 'right';
 
 t = 0:0.05:pi;
-specs.nirs.pos  = 'right';
-specs.nirs.mni = [-26 65 19];
-specs.nirs.t    = t;
-specs.nirs.oxy  = sin(t);
-specs.nirs.deoxy = -0.1*sin(t);
+specs.nirs(1).mni = [-26 65 19];
+specs.nirs(1).t    = t;
+specs.nirs(1).oxy  = sin(t);
+specs.nirs(1).deoxy = -0.1*sin(t);
+
+specs.nirs(2).mni = [-12 70 20];
+specs.nirs(2).t    = t;
+specs.nirs(2).oxy  = sin(t);
+specs.nirs(2).deoxy = -0.1*sin(t);
 
 arrange_layout(specs);
