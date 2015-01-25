@@ -5,7 +5,8 @@ location of the source and detector optodes and the measurement channel position
 
 I couldn't find anything that suited my needs therefore I put it on Github in case anybody
 else is looking for something similar.
-e
+
+
 ![Screenshot](screenshot/example.png?raw=true "Simple Brain Surface")
 
 ## License
