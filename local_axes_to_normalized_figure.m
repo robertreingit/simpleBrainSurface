@@ -13,9 +13,22 @@ function n_point = local_axes_to_normalized_figure(h_axe,point)
 % n_point = point in normalized figure units
 % SIDEEFFECTS:
 % None.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% generating scribeping object with coordinates of desired point
 scribepin = scribe.scribepin('parent',h_axe,'DataAxes',h_axe,'DataPosition',point);
+% map to pixels in figure coordinates
 figPixelPos = scribepin.topixels;
+% get handle to parent figure
 hFig = ancestor(h_axe,'figure');
-n_point = hgconvertunits(hFig,[figPixelPos,1,1],'pixels','norm',hFig);
+% get position of parent figure in pixels
+figPos = getpixelposition(hFig);
+% subtract position of point (in pixelx) from 
+% width of figure (in pixels).
+figPixelPos(2) = figPos(4) - figPixelPos(2);
+% map pixels to normalized units
+% hgconvertunits expects a rectangle therefore using dummy
+% width and height = 10.
+n_point = hgconvertunits(hFig,[figPixelPos,10,10],'pixels','norm',hFig);
+% throw away dummy width and height
+n_point = n_point(1:2);
