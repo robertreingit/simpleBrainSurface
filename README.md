@@ -6,7 +6,7 @@ Main intended usage is for presentation of functional near-infrared spectroscopy
 location of the source and detector optodes and the measurement channel positions and if desired the resulting activation signal including a simple layout generator.
 
 ## Motivation
-I couldn't find anything that suited my needs as most render functions out there are somewhat to heavy for what I want to do. Therefore, I put the project on Github in case anybody else is looking for something similar.
+I couldn't find anything that suited me as most render functions out there are somewhat to heavy for what I need. I put this project on Github in case anybody else is looking for something similar.
 
 
 ![Screenshot](screenshot/example.png?raw=true "Simple Brain Surface")
